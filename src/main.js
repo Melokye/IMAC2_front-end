@@ -13,6 +13,7 @@ const title = 'Spy x Family';
 const baseUrl = 'https://api.mangadex.org';
 
 const resp = await axios({
+    // TODO async
     method: 'GET',
     url: `${baseUrl}/manga`,
     params: {
