@@ -27,16 +27,16 @@
 </script>
 
 <style scoped>
-.manga-card {
-    /* display: flex; */
-    columns: 2;
-    border-radius: 1rem;
-    background-color: #003E73;
-    border: 0.2rem solid #3DF1CD ;
-    padding: 1rem;
-}
+    .manga-card {
+        /* display: flex; */
+        columns: 2;
+        border-radius: 1rem;
+        background-color: #003E73;
+        border: 0.2rem solid #3DF1CD ;
+        padding: 1rem;
+    }
 
-h2 {
-    font-size: 20px;
-}
+    h2 {
+        font-size: 20px;
+    }
 </style>
