@@ -27,17 +27,14 @@
 </script>
 
 <style scoped>
+    /* TODO columns class */
     .manga-card {
         /* display: flex; */
         columns: 2;
         border-radius: 1rem;
-        background-color: #003E73;
+        /* background-color: transparent #003E73; */
         border: 0.2rem solid #3DF1CD ;
         padding: 2rem;
         margin-bottom: 2rem;
-    }
-
-    h2 {
-        font-size: 20px;
     }
 </style>
