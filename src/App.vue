@@ -19,8 +19,8 @@
 
 <script>
 // import { getMangasData } from '../services/api/mangaAPI';
-import { getMangasData } from './main';
-import MangaCard from '@/MangaCard.vue'
+// import { getMangasData } from './main';
+import MangaCard from '@/components/MangaCard.vue'
 
 // TOOD deplacer MangaCard.vue dans un dossier components
 
@@ -39,8 +39,8 @@ export default {
   methods:{
     async retrieveMangasData(){
       // this.mangasData =
-      const test = await getMangasData();
-      console.log(test);
+      // const test = await getMangasData();
+      // console.log(test);
     }
   }
   
