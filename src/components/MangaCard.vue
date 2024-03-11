@@ -2,7 +2,7 @@
 <!-- type ? -->
 <!-- attributes -->
     <div class="manga-card">
-        <h2>Title : {{title}}</h2>
+        <h2>{{title}}</h2>
         <p>Drapeau d'origine ?</p>
         <p>IMG</p>
         altTitles ?
@@ -10,7 +10,7 @@
         <p>Tag ?</p>
 
         <p>Status : nb de chapitres pas encore lu</p>
-        <p>Description rapide</p>
+        <p>Description : {{ summary }}</p>
         <p>Lien vers le dernier chapitre (lu ?)</p>
         <p>Obligatoire : scanlation groups</p>
     </div>
@@ -21,7 +21,7 @@
         name: 'MangaCard',
         props: {
             title: String,
-            // description: String
+            summary: String
         }
     }
 </script>
@@ -33,7 +33,8 @@
         border-radius: 1rem;
         background-color: #003E73;
         border: 0.2rem solid #3DF1CD ;
-        padding: 1rem;
+        padding: 2rem;
+        margin-bottom: 2rem;
     }
 
     h2 {
