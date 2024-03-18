@@ -2,7 +2,8 @@
 <!-- type ? -->
 <!-- attributes -->
     <div class="manga-card">
-        <h2>{{title}}</h2>
+        <h2>{{attributes.title.en}}</h2>
+
         <p>Drapeau d'origine ?</p>
         <p>IMG</p>
         altTitles ?
@@ -10,7 +11,7 @@
         <p>Tag ?</p>
 
         <p>Status : nb de chapitres pas encore lu</p>
-        <p>Description : {{ summary }}</p>
+        <p>Description : {{ attributes.description.en }}</p>
         <p>Lien vers le dernier chapitre (lu ?)</p>
         <p>Obligatoire : scanlation groups</p>
     </div>
@@ -20,8 +21,7 @@
     export default{
         name: 'MangaCard',
         props: {
-            title: String,
-            summary: String
+            attributes: []
         }
     }
 </script>

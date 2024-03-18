@@ -1,7 +1,7 @@
 <template>  
   <h2>Gallery</h2>
   <div v-for="manga in mangasData">
-      <MangaCard :title="manga.title.en" :summary="manga.description.en"/>
+      <MangaCard :attributes="manga.attributes" :summary="manga.attributes.description.en"/>
 
       <!-- TODO {{ manga.originalLanguage }} -->
       <!-- TODO img : https://api.mangadex.org/docs/03-manga/covers/-->

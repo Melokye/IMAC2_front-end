@@ -14,7 +14,7 @@ const getMangasData = async function(){
     });
     
     // TODO test response.status ?
-    // console.log(response.data.data.map(manga => manga.attributes));
-    return response.data.data.map(manga => manga.attributes); // TODO test
+    console.log(response.data.data); // TODO test
+    return response.data.data; // .map(manga => manga.attributes)
 }
 
