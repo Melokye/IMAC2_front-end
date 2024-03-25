@@ -1,10 +1,10 @@
 import axios, {isCancel, AxiosError} from 'axios';
 export {getMangasData}
 
-const title = 'Spy x Family'; // TODO test
+// const title = 'Spy x Family'; // TODO test
 const baseUrl = 'https://api.mangadex.org';
 
-const getMangasData = async function(){
+const getMangasData = async function(title){
     const response = await axios({
         method: 'GET',
         url: `${baseUrl}/manga`,
@@ -13,8 +13,9 @@ const getMangasData = async function(){
         }
     });
     
-    // TODO test response.status ?
-    console.log(response.data.data); // TODO test
+    if(response.status != 200){
+        console.log("error");
+        // TODO voir diapo
+    }
     return response.data.data; // .map(manga => manga.attributes)
 }
-
