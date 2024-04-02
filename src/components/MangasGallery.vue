@@ -47,22 +47,19 @@
     },
     computed:{
       mangasOrganizedData() {
-        // const field = ["AZName", "ZAName"].includes(this.mangasSortType) ? "attributes.title.en" : "breed";
+        // const field = ["AZName", "ZAName"].includes(this.mangasSortType) ? "attributes.title.en" : "???";
         const reversed = ["ZAName"].includes(this.mangasSortType);
 
-      // TODO const filterFunc = (a) => a.name.toLowerCase().includes(this.search.toLowerCase())
         const comparator = (a, b) => a.attributes.title.en.localeCompare(b.attributes.title.en);
           // TODO attributes.title.en => à généraliser
-      // TODO toLowerCase() au moment du tri ?
-      // TODO à mettre : this.dogsData.filter(filterFunc)
 
         let data = this.mangasData.sort(comparator);      
         if (reversed) data = data.reverse();
         return data;
         
         // return this.mangasData
-        // .filter((a) => a.name.toLowerCase().includes(this.search.toLowerCase()))
-        // .sort((a, b) => a[field].localeCompare(b[field]) * reversed)
+        // .filter((a) => a.attributes.title.en.toLowerCase().includes(this.search.toLowerCase()))
+        // .sort((a, b) => a.attributes.title.en.localeCompare(b.attributes.title.en) * reversed)
       }
     },
     watch: {
