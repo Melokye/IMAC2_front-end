@@ -14,13 +14,13 @@
       <option value="AZName">Noms de A à Z</option>
       <option value="ZAName">Noms de Z à A</option>
     </select>
-    <button v-on:click="mangasOrganizedData">My button</button>  
+    <button v-on:click="">My button</button>  
     <!-- TODO v-on:change dans input-->
   </div>
   
   <!-- TODO a mettre dans un nouveau fichier -->
 
-  <div class="mangasGallery" v-for="manga in mangasData">
+  <div class="mangasGallery" v-for="manga in mangasOrganizedData">
     <!-- mangasOrganizedData() -->
       <MangaCard 
       :attributes="manga.attributes" 
@@ -47,26 +47,10 @@
       MangaCard
     },
     computed:{
-      // TODO
-    },
-    data(){
-      return {
-        mangasData: [],
-        search: "",
-        mangasSortType: "AZName"
-      }
-    },
-    created: function(){
-      this.retrieveMangasData();
-    },
-    methods:{
-      async retrieveMangasData(){
-        this.mangasData = await getMangasData();
-      },
-      // TODO donnée calculée
       mangasOrganizedData() {
         // const field = ["AZName", "ZAName"].includes(this.mangasSortType) ? "attributes.title.en" : "breed";
         const reversed = ["ZAName"].includes(this.mangasSortType);
+
       // TODO const filterFunc = (a) => a.name.toLowerCase().includes(this.search.toLowerCase())
         const comparator = (a, b) => a.attributes.title.en.localeCompare(b.attributes.title.en);
           // TODO attributes.title.en => à généraliser
@@ -81,6 +65,21 @@
         // .filter((a) => a.name.toLowerCase().includes(this.search.toLowerCase()))
         // .sort((a, b) => a[field].localeCompare(b[field]) * reversed)
       }
+    },
+    data(){
+      return {
+        mangasData: [],
+        search: "",
+        mangasSortType: "AZName"
+      }
+    },
+    created: function(){
+      this.retrieveMangasData();
+    },
+    methods:{
+      async retrieveMangasData(){
+        this.mangasData = await getMangasData();
+      },      
     },
   }
   </script>
