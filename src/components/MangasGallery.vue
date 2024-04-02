@@ -13,8 +13,6 @@
       <!-- TODO mettre les options dans un dico https://fr.vuejs.org/v2/guide/forms.html#Select -->
       <option value="AZName">Noms de A à Z</option>
       <option value="ZAName">Noms de Z à A</option>
-      <!-- <option value="AZBreed">Espèces de A à Z</option> -->
-      <!-- <option value="ZABreed">Espèces de Z à A</option> -->
     </select>
     <button v-on:click="mangasOrganizedData">My button</button>  
     <!-- TODO v-on:change dans input-->
@@ -65,13 +63,13 @@
       async retrieveMangasData(){
         this.mangasData = await getMangasData();
       },
-
-      // TODO à mettre en donnée calculée
-      mangasOrganizedData: function() {
-        // const field = ["AZName", "ZAName"].includes(this.mangasSortType) ? "name" : "breed";
+      // TODO donnée calculée
+      mangasOrganizedData() {
+        // const field = ["AZName", "ZAName"].includes(this.mangasSortType) ? "attributes.title.en" : "breed";
         const reversed = ["ZAName"].includes(this.mangasSortType);
       // TODO const filterFunc = (a) => a.name.toLowerCase().includes(this.search.toLowerCase())
         const comparator = (a, b) => a.attributes.title.en.localeCompare(b.attributes.title.en);
+          // TODO attributes.title.en => à généraliser
       // TODO toLowerCase() au moment du tri ?
       // TODO à mettre : this.dogsData.filter(filterFunc)
 

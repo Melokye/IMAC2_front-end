@@ -24,7 +24,7 @@
         props: {
             attributes: Object, // TODO ?
             mangaID: String,
-            mangaCoverID: String
+            // mangaCoverID: String
         },
         methods: {
             // getMangaCoverID(){
