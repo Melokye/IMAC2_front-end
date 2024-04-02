@@ -3,6 +3,7 @@
   <div> 
     <!-- TODO class="gallery-options" -->
     <input 
+      v-on:change="retrieveMangasData()"
       type="text" 
       v-model="search"
       name="search" 
@@ -14,8 +15,6 @@
       <option value="AZName">Noms de A à Z</option>
       <option value="ZAName">Noms de Z à A</option>
     </select>
-    <button v-on:click="retrieveMangasData()">Rechercher</button>  
-    <!-- TODO v-on:change dans input-->
   </div>
   
   <!-- TODO a mettre dans un nouveau fichier -->
