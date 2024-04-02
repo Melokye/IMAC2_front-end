@@ -68,16 +68,14 @@
 
       // TODO à mettre en donnée calculée
       mangasOrganizedData: function() {
-        console.log("click"); // TODO
-        const field = ["AZName", "ZAName"].includes(this.mangasSortType) ? "name" : "breed";
-        const reversed = ["ZAName", "ZABreed"].includes(this.mangasSortType);
+        // const field = ["AZName", "ZAName"].includes(this.mangasSortType) ? "name" : "breed";
+        const reversed = ["ZAName"].includes(this.mangasSortType);
       // TODO const filterFunc = (a) => a.name.toLowerCase().includes(this.search.toLowerCase())
         const comparator = (a, b) => a.attributes.title.en.localeCompare(b.attributes.title.en);
       // TODO toLowerCase() au moment du tri ?
       // TODO à mettre : this.dogsData.filter(filterFunc)
-        // console.log(this.mangasData.sort(comparator));
-        let data = this.mangasData.sort(comparator);
-      
+
+        let data = this.mangasData.sort(comparator);      
         if (reversed) data = data.reverse();
         return data;
         
