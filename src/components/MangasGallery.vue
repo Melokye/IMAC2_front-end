@@ -13,8 +13,8 @@
       <!-- TODO mettre les options dans un dico https://fr.vuejs.org/v2/guide/forms.html#Select -->
       <option value="AZName">Noms de A à Z</option>
       <option value="ZAName">Noms de Z à A</option>
-      <option value="AZBreed">Espèces de A à Z</option>
-      <option value="ZABreed">Espèces de Z à A</option>
+      <!-- <option value="AZBreed">Espèces de A à Z</option> -->
+      <!-- <option value="ZABreed">Espèces de Z à A</option> -->
     </select>
     <button v-on:click="mangasOrganizedData">My button</button>  
     <!-- TODO v-on:change dans input-->
