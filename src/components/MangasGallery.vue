@@ -65,11 +65,19 @@
         // .sort((a, b) => a[field].localeCompare(b[field]) * reversed)
       }
     },
+    watch: {
+      search: function(newSearch) {
+        localStorage.setItem("search", newSearch)
+      },
+      mangasSortType: function(newMangasSortType) {
+        localStorage.setItem("mangasSortType", newMangasSortType)
+      }
+    },
     data(){
       return {
         mangasData: [],
-        search: "",
-        mangasSortType: "AZName"
+        search: localStorage.getItem("search") || "",
+        mangasSortType: localStorage.getItem("mangasSortType") || "AZName"
       }
     },
     created: function(){
