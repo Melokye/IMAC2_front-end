@@ -14,7 +14,7 @@
       <option value="AZName">Noms de A à Z</option>
       <option value="ZAName">Noms de Z à A</option>
     </select>
-    <button v-on:click="">My button</button>  
+    <button v-on:click="retrieveMangasData()">Rechercher</button>  
     <!-- TODO v-on:change dans input-->
   </div>
   
@@ -78,7 +78,7 @@
     },
     methods:{
       async retrieveMangasData(){
-        this.mangasData = await getMangasData();
+        this.mangasData = await getMangasData(this.search);
       },      
     },
   }
