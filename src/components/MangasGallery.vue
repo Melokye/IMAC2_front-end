@@ -7,7 +7,7 @@
       v-model="search"
       name="search" 
       placeholder="Chercher un manga">
-    <label for="dog-sort">Trier par : </label>
+    <label for="manga-sort">Trier par : </label>
     <select v-model="mangasSortType" id="manga-sort">
       <!-- TODO id="manga-sort" => pas nécessaire ? -->
       <!-- TODO mettre les options dans un dico https://fr.vuejs.org/v2/guide/forms.html#Select -->
@@ -16,7 +16,7 @@
       <option value="AZBreed">Espèces de A à Z</option>
       <option value="ZABreed">Espèces de Z à A</option>
     </select>
-    <button v-on:click="doStuff">My button</button>  
+    <button v-on:click="mangasOrganizedData">My button</button>  
     <!-- TODO v-on:change dans input-->
   </div>
   
@@ -49,21 +49,7 @@
       MangaCard
     },
     computed:{
-      mangasOrganizedData: function() {
-        const field = ["AZName", "ZAName"].includes(this.mangasSortType) ? "name" : "breed";
-        const reversed = ["ZAName", "ZABreed"].includes(this.mangasSortType);
-      // TODO const filterFunc = (a) => a.name.toLowerCase().includes(this.search.toLowerCase())
-        const comparator = (a, b) => a[field].localeCompare(b[field]);
-      // TODO toLowerCase() au moment du tri ?
-        let data = this.mangasData.sort(comparator);
-      // TODO à mettre avant : this.dogsData.filter(filterFunc)
-        if (reversed) data = data.reverse();
-        return data;
-        
-        // return this.mangasData
-        // .filter((a) => a.name.toLowerCase().includes(this.search.toLowerCase()))
-        // .sort((a, b) => a[field].localeCompare(b[field]) * reversed)
-      }
+      // TODO
     },
     data(){
       return {
@@ -79,9 +65,25 @@
       async retrieveMangasData(){
         this.mangasData = await getMangasData();
       },
-      doStuff : function(event) {
-        // console.log("clicked");
-        event.target.text = "My Button Clicked"
+
+      // TODO à mettre en donnée calculée
+      mangasOrganizedData: function() {
+        console.log("click"); // TODO
+        const field = ["AZName", "ZAName"].includes(this.mangasSortType) ? "name" : "breed";
+        const reversed = ["ZAName", "ZABreed"].includes(this.mangasSortType);
+      // TODO const filterFunc = (a) => a.name.toLowerCase().includes(this.search.toLowerCase())
+        const comparator = (a, b) => a.attributes.title.en.localeCompare(b.attributes.title.en);
+      // TODO toLowerCase() au moment du tri ?
+      // TODO à mettre : this.dogsData.filter(filterFunc)
+        // console.log(this.mangasData.sort(comparator));
+        let data = this.mangasData.sort(comparator);
+      
+        if (reversed) data = data.reverse();
+        return data;
+        
+        // return this.mangasData
+        // .filter((a) => a.name.toLowerCase().includes(this.search.toLowerCase()))
+        // .sort((a, b) => a[field].localeCompare(b[field]) * reversed)
       }
     },
   }
