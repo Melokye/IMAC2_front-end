@@ -6,7 +6,7 @@
     name="search" 
     placeholder="Chercher un manga"
   >
-
+  <GallerySort v-model:mangasSortType="mangasSortType"/>
   <GalleryOptions v-model:search="search" v-model:mangasSortType="mangasSortType"/>
 
   <div class="mangasGallery" v-for="manga in mangasOrganizedData">
@@ -31,12 +31,14 @@
 
   import MangaCard from '@/components/MangaCard.vue';
   import GalleryOptions from './GalleryOptions.vue';
+  import GallerySort from './GallerySort.vue';
 
   export default {
     name: 'MangasGallery',
     components:{
       MangaCard, 
-      GalleryOptions
+      GalleryOptions,
+      GallerySort
     },
     created: function() {
       this.retrieveMangasData();
