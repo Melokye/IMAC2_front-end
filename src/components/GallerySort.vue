@@ -1,5 +1,6 @@
 <template>
   <!-- TODO <div> class="gallery-options" -->
+  <div>
     <label for="manga-sort">Trier par : </label>
 
     <select 
@@ -11,7 +12,7 @@
       <option value="AZName">Noms de A à Z</option>
       <option value="ZAName">Noms de Z à A</option>
     </select>
-  <!-- </div> -->
+  </div>
 </template>
 
 <script>
