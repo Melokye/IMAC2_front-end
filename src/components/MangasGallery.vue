@@ -19,21 +19,17 @@
 
       <!-- TODO à supp : -->
       <!-- TODO  -->
-
-      <!-- <img width="128" height="256" 
-      src="https://uploads.mangadex.org/covers/
-      {{ manga.id }}/{{ manga.relationships.filter(data => data['type'] == 'cover_art').map(data => data['id'])[0] }}.png"> -->
+      <img 
+      src="https://uploads.mangadex.org/covers/{{manga.id}}/{{ manga.relationships.filter(data => data['type'] == 'cover_art').map(data => data.attributes['fileName'])[0]}}">
 
       <!-- <div v-for="data in manga.relationships">
         <p>{{ data }}</p>
       </div> -->
 
       <!-- Test : -->
-      <!-- {{ manga.relationships.filter(data => data["type"] == "cover_art").map(data => data["id"])[0] }} -->
-      <!-- e45950fb-5e0f-4fd2-b1af-7380c7f8b735 -->
-      <!-- 4502d90e-0893-45ee-acc7-376885362aea -->
+      https://uploads.mangadex.org/covers/{{ manga.id }}/{{ manga.relationships.filter(data => data["type"] == "cover_art").map(data => data.attributes["fileName"])[0]}}
+
       <!-- https://uploads.mangadex.org/covers/:manga-id/:cover-filename -->
-      <!-- TODO img : https://api.mangadex.org/docs/03-manga/covers/-->
       <!-- TODO altTitle ? -> originalLanguage + selected -->
       <!-- TODO {{ manga.availableTranslatedLanguages }} -->
       <!-- TODO {{ manga.attributes.latestUploadedChapter }} -->
