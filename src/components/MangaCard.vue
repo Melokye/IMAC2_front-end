@@ -2,10 +2,10 @@
 <!-- type ? -->
 <!-- attributes -->
     <div class="manga-card">
+        <img 
+            v-bind:src= "'https://uploads.mangadex.org/covers/' +  mangaID + '/' +  mangaCoverID + '.256.jpg'"
+        />
         <h2>[{{attributes.originalLanguage}}] {{attributes.title.en}}</h2>
-        <!-- <img src="https://uploads.mangadex.org/covers/{{mangaID}}/{{getMangaCoverID()}}.jpg"> -->
-    
-        <p>IMG</p>
         <!-- altTitles ? -->
         <p>Author</p>
         <p>Tag ?</p>
@@ -24,19 +24,7 @@
         props: {
             attributes: Object, // TODO ?
             mangaID: String,
-            // mangaCoverID: String
-        },
-        methods: {
-            // getMangaCoverID(){
-            //     for (const property in mangaCoverID){
-            //     if(property[type] == "cover_art")
-            //         return property[id];
-            //     }
-
-            //     // type == "artist"
-            //     // type == "author"
-            //     // type == "cover_art"
-            // }
+            mangaCoverID: String
         }
     }
 </script>
@@ -51,10 +39,16 @@
         border: 0.2rem solid #3DF1CD ;
         padding: 2rem;
         margin-bottom: 2rem;
+        text-align: center;
+        width: 22rem;
+        height: 30rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     img {
-        max-width: 100%;
+        width: 256px;
         max-height: 100%;
+        /* TODO rounded */
     }
 </style>

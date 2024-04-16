@@ -14,22 +14,15 @@
       <MangaCard 
         :attributes="manga.attributes" 
         :mangaID="manga.id"
-        :mangaCoverID="manga.relationships"
+        :mangaCoverID="manga.relationships.filter(data => data['type'] == 'cover_art').map(data => data.attributes['fileName'])[0]"
       />
 
       <!-- TODO à supp : -->
-      <!-- TODO  -->
-      <img 
-      src="https://uploads.mangadex.org/covers/{{manga.id}}/{{ manga.relationships.filter(data => data['type'] == 'cover_art').map(data => data.attributes['fileName'])[0]}}">
-
+   
       <!-- <div v-for="data in manga.relationships">
         <p>{{ data }}</p>
       </div> -->
 
-      <!-- Test : -->
-      https://uploads.mangadex.org/covers/{{ manga.id }}/{{ manga.relationships.filter(data => data["type"] == "cover_art").map(data => data.attributes["fileName"])[0]}}
-
-      <!-- https://uploads.mangadex.org/covers/:manga-id/:cover-filename -->
       <!-- TODO altTitle ? -> originalLanguage + selected -->
       <!-- TODO {{ manga.availableTranslatedLanguages }} -->
       <!-- TODO {{ manga.attributes.latestUploadedChapter }} -->
@@ -94,6 +87,7 @@
 <style>
 .mangasGallery {
   display: flex;
+  margin-left: 1rem;
 }
 
 h2 {
