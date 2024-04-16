@@ -1,12 +1,17 @@
 <template>
   <h1>MangaTime</h1>
+  <!-- TODO header -->
   <!-- <div>  -->
     <!-- TODO id = "parentComponent" ?-->
   <h2>Gallery</h2>
   <MangasGallery/>
   <!-- </div> -->
-  Créé avec l'API MangaDex par
-  <a href="https://melokye.github.io/">Melokye</a>
+
+  <!-- TODO footer -->
+  <div>
+    Créé avec l'API MangaDex par
+    <a href="https://melokye.github.io/">Melokye</a>
+  </div>
 </template>
 
 <script>
