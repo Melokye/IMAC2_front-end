@@ -2,19 +2,29 @@
 <!-- type ? -->
 <!-- attributes -->
     <div class="manga-card">
-        <img 
-            v-bind:src= "'https://uploads.mangadex.org/covers/' +  mangaID + '/' +  mangaCoverID + '.256.jpg'"
-        />
-        <h2>[{{attributes.originalLanguage}}] {{attributes.title.en}}</h2>
-        <!-- altTitles ? -->
-        <p>Author</p>
-        <p>Tag ?</p>
+        <div class="rectoVerso">
+            <img 
+                v-bind:src= "'https://uploads.mangadex.org/covers/' +  mangaID + '/' +  mangaCoverID"
+            />
 
-        <p>Status : {{ attributes.status }}</p>
-        <!-- TODO nb de chapitres pas encore lu -->
-        <p>Description : {{ attributes.description.en }}</p>
-        <!-- TODO <p>Lien vers le dernier chapitre (lu ?)</p> -->
-        <!-- TODO <p>Obligatoire : scanlation groups</p> -->
+            <div class="overlay">
+                <div class="text">
+                    <!-- altTitles ? -->
+                    <p>Author</p>
+                    <!-- <p>Tag ?</p> -->
+
+                    <p>Status : {{ attributes.status }}</p>
+                    <!-- TODO nb de chapitres pas encore lu -->
+                    <!-- <p>Description : {{ attributes.description.en }}</p> -->
+                    <!-- TODO <p>Lien vers le dernier chapitre (lu ?)</p> -->
+                    <!-- TODO <p>Obligatoire : scanlation groups</p> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- TODO overflow ? -->
+        <h2>[{{attributes.originalLanguage}}] {{attributes.title.en}}</h2>
+
     </div>
 </template>
 
@@ -30,25 +40,61 @@
 </script>
 
 <style scoped>
-    /* TODO columns class */
     .manga-card {
-        /* display: flex; */
-        /* TODO columns: 2; */
         border-radius: 1rem;
         /* background-color: transparent #003E73; */
         border: 0.2rem solid #3DF1CD ;
+
         padding: 2rem;
         margin-bottom: 2rem;
-        text-align: center;
-        width: 22rem;
-        height: 30rem;
+
+        width: 50%;
+        /* width: 22rem; */
+        /* height: 30rem; */
+
         overflow: hidden;
         text-overflow: ellipsis;
+        text-align: center;
+    }
+    .rectoVerso{
+        position: relative;
+    }
+    .manga-card:hover .overlay {
+        opacity: 1;
+    }
+    .manga-card:hover img {
+        opacity: 0.1;
     }
 
+    .overlay{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: .7s ease;
+    }
+    .text {
+        color: white;
+        position: absolute;
+        top: 25%;
+        left: 25%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+
+        text-align: left;
+        /* overflow: hidden;
+        text-overflow: ellipsis; */
+      }
+
     img {
-        width: 256px;
-        max-height: 100%;
-        /* TODO rounded */
+        width: 100%;
+        /* width: 256px; */
+        height: auto;
+        border-radius: 1rem;
+        display: block;
     }
 </style>
