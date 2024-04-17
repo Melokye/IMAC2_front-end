@@ -11,8 +11,11 @@
   <GallerySort v-model:mangasSortType="mangasSortType" />
 
   <div class="mangasGallery" v-for="manga in mangasOrganizedData">
-    <MangaCard :attributes="manga.attributes" :mangaID="manga.id"
-      :mangaCoverID="manga.relationships.filter(data => data['type'] == 'cover_art').map(data => data.attributes['fileName'])[0]" />
+    <MangaCard 
+      :attributes="manga.attributes" 
+      :mangaID="manga.id"
+      :mangaCoverID="manga.relationships.filter(data => data['type'] == 'cover_art').map(data => data.attributes['fileName'])[0]" 
+    />
     <!-- TODO mangaCoverID => dans une fct-->
     <!-- TODO attributes -->
 
@@ -82,7 +85,10 @@ export default {
     },
     getTitle(manga){
       return manga.attributes.title[manga.attributes.originalLanguage] || manga.attributes.title.en;
-    }
+    },
+    goToManga() {
+      this.$router.push('/manga/' + manga.id);
+    },
   },
 }
 </script>

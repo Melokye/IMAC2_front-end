@@ -7,6 +7,9 @@ import MangasGallery from './components/MangasGallery.vue'
 
 const routes = [
     {path: '/', component: MangasGallery},
+    // TODO créer MangaPage
+    // {path: '/manga/:id', component: MangasGallery},
+    // TODO creer NotFound
 ]
 
 const router = createRouter({
