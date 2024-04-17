@@ -15,7 +15,7 @@
 
                     <p>Status : {{ attributes.status }}</p>
                     <!-- TODO nb de chapitres pas encore lu -->
-                    <!-- <p>Description : {{ attributes.description.en }}</p> -->
+                    <p>Description : {{ attributes.description.en }}</p>
                     <!-- TODO <p>Lien vers le dernier chapitre (lu ?)</p> -->
                     <!-- TODO <p>Obligatoire : scanlation groups</p> -->
                 </div>
@@ -77,22 +77,22 @@
         opacity: 0;
         transition: .7s ease;
     }
+
     .text {
-        color: white;
         position: absolute;
-        top: 25%;
-        left: 25%;
-        -webkit-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
 
         text-align: left;
-        /* overflow: hidden;
-        text-overflow: ellipsis; */
-      }
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        /* TODO class à part ? */
+        display: -webkit-box;
+        -webkit-line-clamp: 10;
+        -webkit-box-orient: vertical;
+    }
 
     img {
         width: 100%;
-        /* width: 256px; */
         height: auto;
         border-radius: 1rem;
         display: block;
