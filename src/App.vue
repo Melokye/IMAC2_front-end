@@ -3,8 +3,9 @@
   <!-- TODO header -->
   <!-- <div>  -->
     <!-- TODO id = "parentComponent" ?-->
-  <h2>Gallery</h2>
-  <MangasGallery/>
+    <RouterView />
+  <!-- <h2>Gallery</h2>
+  <MangasGallery/> -->
   <!-- </div> -->
 
   <!-- TODO footer -->
