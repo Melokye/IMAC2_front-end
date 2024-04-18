@@ -3,10 +3,10 @@ import { createApp } from 'vue'
 import { createMemoryHistory, createRouter } from 'vue-router'
 import App from './App.vue'
 
-import MangasGallery from './components/MangasGallery.vue'
+import Home from './pages/home.vue'
 
 const routes = [
-    {path: '/', component: MangasGallery},
+    {path: '/', component: Home},
     // TODO créer MangaPage
     // {path: '/manga/:id', component: MangasGallery},
     // TODO creer NotFound

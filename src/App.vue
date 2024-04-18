@@ -14,14 +14,12 @@
 </template>
 
 <script>
-import MangasGallery from './components/MangasGallery.vue';
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 
 export default {
   name: "MainComponent",
   components: {
-    MangasGallery,
     Header,
     Footer
   }
