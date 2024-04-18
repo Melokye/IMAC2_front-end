@@ -1,6 +1,5 @@
 <template>
   <!-- TODO <div> class="gallery-options" -->
-    <!-- TODO v-on:change="retrieveMangasData()" -->
     <input 
       type="text"
       :value="search"

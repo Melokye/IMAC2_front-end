@@ -1,13 +1,5 @@
 <template>
-  <input 
-    type="text" 
-    v-on:change="retrieveMangasData()" 
-    v-model="search" 
-    name="search" 
-    placeholder="Chercher un manga"
-  >
-  <!-- TODO <GalleryOptions v-model:search="search"/> -->
-
+  <GalleryOptions v-model:search="search"/>
   <GallerySort v-model:mangasSortType="mangasSortType" />
 
   <div class="mangasGallery">
@@ -51,9 +43,9 @@ export default {
     this.retrieveMangasData();
   },
   watch: {
-    mangasSortType: function (newMangasSortType) {
-      localStorage.setItem("mangasSortType", newMangasSortType);
-    }
+    search: function() {
+      this.retrieveMangasData();
+    },
   },
   computed: {
     mangasOrganizedData() {
@@ -81,6 +73,7 @@ export default {
   },
   methods: {
     async retrieveMangasData() {
+
       this.mangasData = await getMangasData(this.search);
     },
     getTitle(manga){
