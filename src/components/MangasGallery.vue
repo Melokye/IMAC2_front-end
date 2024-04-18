@@ -1,5 +1,5 @@
 <template>
-  <GalleryOptions v-model:search="search"/>
+  <SearchMangas v-model:search="search"/>
   <GallerySort v-model:mangasSortType="mangasSortType" />
 
   <div class="mangasGallery">
@@ -29,14 +29,14 @@
 import { getMangasData } from '../services/api/mangaAPI';
 
 import MangaCard from '@/components/MangaCard.vue';
-import GalleryOptions from './GalleryOptions.vue';
+import SearchMangas from './SearchMangas.vue';
 import GallerySort from './GallerySort.vue';
 
 export default {
   name: 'MangasGallery',
   components: {
     MangaCard,
-    GalleryOptions,
+    SearchMangas,
     GallerySort
   },
   created: function () {
