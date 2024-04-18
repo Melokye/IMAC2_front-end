@@ -6,9 +6,8 @@
     <MangaCard v-for="manga in mangasOrganizedData"
       :attributes="manga.attributes" 
       :mangaID="manga.id"
-      :mangaCoverID="manga.relationships.filter(data => data['type'] == 'cover_art').map(data => data.attributes['fileName'])[0]" 
+      :mangaCoverID="getMangaCoverID(manga)" 
     />
-    <!-- TODO mangaCoverID => dans une fct-->
     <!-- TODO attributes -->
 
     <!-- TODO à supp : -->
@@ -54,7 +53,7 @@ export default {
       const comparator = (a, b) => this.getTitle(a).localeCompare(this.getTitle(b));
       // a.attributes.title.localeCompare(b.attributes.title);
       // TODO attributes.title.en => à généraliser
-// TODO trier par un autre critère
+      // TODO trier par un autre critère
       let data = this.mangasData.sort(comparator);      
       if (reversed) data = data.reverse();
       return data;
@@ -82,6 +81,9 @@ export default {
     goToManga() {
       this.$router.push('/manga/' + manga.id);
     },
+    getMangaCoverID(manga){
+      return manga.relationships.filter(data => data['type'] == 'cover_art').map(data => data.attributes['fileName'])[0];
+    }
   },
 }
 </script>
@@ -92,9 +94,5 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-}
-
-h2 {
-  font-size: 20px;
 }
 </style>
