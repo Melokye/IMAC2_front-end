@@ -42,15 +42,10 @@
 <style scoped>
     .manga-card {
         border-radius: 1rem;
-        /* background-color: transparent #003E73; */
-        border: 0.2rem solid #3DF1CD ;
+        border: 0.1rem solid #3DF1CD ;
 
         padding: 2rem;
-        margin-bottom: 2rem;
-
-        width: 50%;
-        /* width: 22rem; */
-        /* height: 30rem; */
+        width: 15rem;
 
         overflow: hidden;
         text-overflow: ellipsis;

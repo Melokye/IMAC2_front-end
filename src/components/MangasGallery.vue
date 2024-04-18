@@ -10,8 +10,8 @@
 
   <GallerySort v-model:mangasSortType="mangasSortType" />
 
-  <div class="mangasGallery" v-for="manga in mangasOrganizedData">
-    <MangaCard 
+  <div class="mangasGallery">
+    <MangaCard v-for="manga in mangasOrganizedData"
       :attributes="manga.attributes" 
       :mangaID="manga.id"
       :mangaCoverID="manga.relationships.filter(data => data['type'] == 'cover_art').map(data => data.attributes['fileName'])[0]" 
@@ -96,7 +96,9 @@ export default {
 <style>
 .mangasGallery {
   display: flex;
-  margin-left: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 
 h2 {
