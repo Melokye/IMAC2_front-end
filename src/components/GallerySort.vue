@@ -1,7 +1,6 @@
 <template>
-  <!-- TODO <div> class="gallery-options" -->
   <div>
-    <label for="manga-sort">Trier par : </label>
+    <label for="manga-sort">Sort by: </label>
 
     <select 
       :value="mangasSortType"
