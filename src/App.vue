@@ -1,15 +1,6 @@
 <template>
   <Header /> 
-  <!-- TODO header directement dans une page ? -->
-
-  <!-- <div>  --> 
-    <!-- TODO id = "parentComponent" ?-->
   <RouterView />
-  <!-- <h2>Gallery</h2>
-  <MangasGallery/> -->
-  <!-- </div> -->
-
-  <!-- TODO footer -->
   <Footer />
 </template>
 
