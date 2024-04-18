@@ -1,27 +1,29 @@
 <template>
-  <h1>MangaTime</h1>
-  <!-- TODO header -->
-  <!-- <div>  -->
+  <Header /> 
+  <!-- TODO header directement dans une page ? -->
+
+  <!-- <div>  --> 
     <!-- TODO id = "parentComponent" ?-->
-    <RouterView />
+  <RouterView />
   <!-- <h2>Gallery</h2>
   <MangasGallery/> -->
   <!-- </div> -->
 
   <!-- TODO footer -->
-  <div>
-    Créé avec l'API MangaDex par
-    <a href="https://melokye.github.io/">Melokye</a>
-  </div>
+  <Footer />
 </template>
 
 <script>
 import MangasGallery from './components/MangasGallery.vue';
+import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
 
 export default {
   name: "MainComponent",
   components: {
-    MangasGallery
+    MangasGallery,
+    Header,
+    Footer
   }
 }
 </script>
