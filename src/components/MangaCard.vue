@@ -1,29 +1,22 @@
 <template>
-<!-- type ? -->
-<!-- attributes -->
     <div class="manga-card">
-        <div class="rectoVerso">
+        <div class="reversible">
             <img 
-                v-bind:src= "'https://uploads.mangadex.org/covers/' +  mangaID + '/' +  mangaCoverID"
+                v-bind:src= "mangaCover"
             />
 
             <div class="overlay">
                 <div class="text">
-                    <!-- altTitles ? -->
-                    <p>Author</p>
-                    <!-- <p>Tag ?</p> -->
-
-                    <p>Status : {{ attributes.status }}</p>
-                    <!-- TODO nb de chapitres pas encore lu -->
-                    <p>Description : {{ attributes.description.en }}</p>
-                    <!-- TODO <p>Lien vers le dernier chapitre (lu ?)</p> -->
-                    <!-- TODO <p>Obligatoire : scanlation groups</p> -->
+                    <p>By: </p>
+                    <p>Status: {{ mangaStatus }}</p>
+                    <p>{{ mangaDescription || "No description found" }}</p>
                 </div>
             </div>
         </div>
 
-        <!-- TODO overflow ? -->
-        <h2>[{{attributes.originalLanguage}}] {{attributes.title.en}}</h2>
+        <h3>
+            {{mangaTitle}}
+        </h3>
 
     </div>
 </template>
@@ -32,9 +25,10 @@
     export default{
         name: 'MangaCard',
         props: {
-            attributes: Object, // TODO ?
-            mangaID: String,
-            mangaCoverID: String
+            mangaCover: String,
+            mangaTitle: String,
+            mangaDescription : String,
+            mangaStatus: String
         }
     }
 </script>
@@ -51,7 +45,7 @@
         text-overflow: ellipsis;
         text-align: center;
     }
-    .rectoVerso{
+    .reversible{
         position: relative;
     }
     .manga-card:hover .overlay {
@@ -80,13 +74,12 @@
         overflow: hidden;
         text-overflow: ellipsis;
 
-        /* TODO class à part ? */
         display: -webkit-box;
         -webkit-line-clamp: 10;
         -webkit-box-orient: vertical;
     }
 
-    img {
+    .reversible img {
         width: 100%;
         height: auto;
         border-radius: 1rem;

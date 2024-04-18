@@ -4,10 +4,12 @@
 
   <div class="mangasGallery">
     <MangaCard v-for="manga in mangasOrganizedData"
-      :attributes="manga.attributes" 
-      :mangaID="manga.id"
-      :mangaCoverID="getMangaCoverID(manga)" 
+      :mangaCover="getMangaCover(manga)"
+      :mangaTitle="manga.attributes.title.en"
+      :mangaDescription="manga.attributes.description.en"
+      :mangaStatus="manga.attributes.status"
     />
+
     <!-- TODO attributes -->
 
     <!-- TODO à supp : -->
@@ -16,10 +18,17 @@
         <p>{{ data }}</p>
       </div> -->
 
+    <!-- {{ manga.attributes.originalLanguage }} -->
+    <!-- TODO nb de chapitres pas encore lu -->
+
+    <!-- TODO <p>Lien vers le dernier chapitre (lu ?)</p> -->
+    <!-- TODO <p>Obligatoire : scanlation groups</p> -->
+
     <!-- TODO altTitle ? -> originalLanguage + selected -->
     <!-- TODO {{ manga.availableTranslatedLanguages }} -->
     <!-- TODO {{ manga.attributes.latestUploadedChapter }} -->
-    <!-- () -->
+                    <!-- altTitles ? -->
+
     <!-- TODO {{ manga.attributes.tags }} -->
   </div>
 </template>
@@ -72,7 +81,6 @@ export default {
   },
   methods: {
     async retrieveMangasData() {
-
       this.mangasData = await getMangasData(this.search);
     },
     getTitle(manga){
@@ -81,8 +89,9 @@ export default {
     goToManga() {
       this.$router.push('/manga/' + manga.id);
     },
-    getMangaCoverID(manga){
-      return manga.relationships.filter(data => data['type'] == 'cover_art').map(data => data.attributes['fileName'])[0];
+    getMangaCover(manga){
+      let mangaCoverId = manga.relationships.filter(data => data['type'] == 'cover_art').map(data => data.attributes['fileName'])[0];
+      return 'https://uploads.mangadex.org/covers/' +  manga.id + '/' +  mangaCoverId;
     }
   },
 }
