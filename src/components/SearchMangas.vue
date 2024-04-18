@@ -4,7 +4,7 @@
       :value="search"
       @change="onSearchChanged" 
       name="search" 
-      placeholder="Chercher un manga">
+      placeholder="Search something to read">
 </template>
 
 <script>
