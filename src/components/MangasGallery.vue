@@ -1,5 +1,6 @@
 <template>
   <SearchMangas v-model:search="search"/>
+
   <GallerySort v-model:mangasSortType="mangasSortType" />
 
   <div class="mangasGallery">
@@ -9,8 +10,6 @@
       :mangaDescription="manga.attributes.description.en"
       :mangaStatus="manga.attributes.status"
     />
-
-    <!-- TODO attributes -->
 
     <!-- TODO à supp : -->
 
@@ -51,7 +50,8 @@ export default {
     this.retrieveMangasData();
   },
   watch: {
-    search: function() {
+    search: function(newSearch) {
+      localStorage.setItem("search", newSearch); // ne fonctionnait pas directement sur l'enfant ...
       this.retrieveMangasData();
     },
   },
