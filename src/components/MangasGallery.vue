@@ -3,7 +3,7 @@
 
   <GallerySort 
     v-model:mangasSortType="mangasSortType"
-    :mangasOptions="mangasOptions"
+    :sortOptions="mangasOptions"
   />
 
   <div class="mangasGallery">
@@ -62,19 +62,12 @@ export default {
     mangasOrganizedData() {
       const comparator = ["AZName", "ZAName"].includes(this.mangasSortType) ? 
          (a, b) => this.getTitle(a).localeCompare(this.getTitle(b))
-        : (a, b) => a.attributes.year < b.attributes.year;
+        : (a, b) => a.attributes.year > b.attributes.year;
       const reversed = ["ZAName", "91Year"].includes(this.mangasSortType);
-      // const comparator = (a, b) => field(a).localeCompare(field(b));
-      // a.attributes.title.localeCompare(b.attributes.title);
-      // TODO attributes.title.en => à généraliser
-      // TODO trier par un autre critère
+
       let data = this.mangasData.sort(comparator);      
       if (reversed) data = data.reverse();
       return data;
-
-      // return this.mangasData
-      // .filter((a) => a.attributes.title.en.toLowerCase().includes(this.search.toLowerCase()))
-      // .sort((a, b) => a.attributes.title.en.localeCompare(b.attributes.title.en) * reversed)
     }
   },
   data() {
@@ -84,8 +77,8 @@ export default {
       mangasOptions: [
         { text: 'A to Z', value: 'AZName' },
         { text: 'Z to A', value: 'ZAName' },
-        { text: 'New to old', value: '19Year'},
-        { text: 'Old to new', value: '91Year'}
+        { text: 'Newest to oldest', value: '91Year'},
+        { text: 'Oldest to newest', value: '19Year'}
       ],
       mangasSortType: localStorage.getItem("mangasSortType") || "AZName",
     }

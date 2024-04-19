@@ -8,7 +8,7 @@
     >
       
     <option 
-      v-for="option in mangasOptions" 
+      v-for="option in sortOptions" 
       :value="option.value"
     >
       {{ option.text }}
@@ -27,7 +27,7 @@
       },
     },
     props:{
-      mangasOptions: []
+      sortOptions: Array
     }
   }
 </script>
