@@ -6,16 +6,19 @@ const getMangasData = async function(title){
         method: 'GET',
         url: `https://api.mangadex.org/manga/`,
         params: {
-            title: title, // TODO à moduler?,
-            includes: ["manga", "cover_art", "author", "artist", "tag", "creator"]
+            title: title,
+            includes: [
+                "manga", "cover_art", 
+                "author", "artist", 
+                "tag", "creator"
+            ]
         },
-        
     });
     
     if(response.status != 200){
         console.log("error");
         // TODO voir diapo
     }
-    console.log(response.data.data); // TODO debug
-    return response.data.data; // .map(manga => manga.attributes)
+    // console.log(response.data.data); // TODO debug
+    return response.data.data;
 }
