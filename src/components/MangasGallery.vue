@@ -8,11 +8,11 @@
 
   <div class="mangasGallery">
     <MangaCard v-for="manga in mangasOrganizedData"
-      :mangaCover="getMangaCover(manga)"
-      :mangaTitle="manga.attributes.title.en"
+      :mangaCover="cover(manga)"
+      :mangaTitle="title(manga)"
       :mangaDescription="manga.attributes.description.en"
       :mangaStatus="manga.attributes.status"
-      :mangasAuthors="getAuthors(manga)"
+      :mangasAuthors="authors(manga)"
       :mangaYear="manga.attributes.year"
       :mangaID="manga.id"
     />
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { getMangasData } from '@/services/api/mangaAPI';
+import { getAuthors, getMangaCover, getMangasData, getTitle} from '@/services/api/mangaAPI';
 
 import MangaCard from '@/components/MangaCard.vue';
 import SearchMangas from '@/components/SearchMangas.vue';
@@ -49,7 +49,7 @@ export default {
   computed: {
     mangasOrganizedData() {
       const comparator = ["AZName", "ZAName"].includes(this.mangasSortType) ? 
-         (a, b) => this.getTitle(a).localeCompare(this.getTitle(b))
+         (a, b) => this.title(a).localeCompare(this.title(b))
         : (a, b) => a.attributes.year > b.attributes.year;
       const reversed = ["ZAName", "91Year"].includes(this.mangasSortType);
 
@@ -76,21 +76,14 @@ export default {
       this.mangasData = await getMangasData(this.search);
     },
 
-    getTitle(manga){
-      return manga.attributes.title[manga.attributes.originalLanguage] || manga.attributes.title.en;
+    title(manga){
+      return getTitle(manga);
     },
-
-    getMangaCover(manga){
-      let mangaCoverId = manga.relationships
-        .filter(data => data['type'] == 'cover_art')
-        .map(data => data.attributes['fileName'])[0];
-      return 'https://uploads.mangadex.org/covers/' +  manga.id + '/' +  mangaCoverId;
+    cover(manga){
+      return getMangaCover(manga);
     },
-
-    getAuthors(manga){
-      return manga.relationships
-        .filter(data => data['type'] == 'author')
-        .map(data => data.attributes['name']);
+    authors(manga){
+      return getAuthors(manga);
     }
   },
 }
