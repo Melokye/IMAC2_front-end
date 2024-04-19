@@ -15,6 +15,7 @@
                             </li>
                         </ul>
                     </p>
+                    <p>Year: {{ mangaYear || "Unknown" }}</p>
                     <p>Status: {{ mangaStatus }}</p>
                     <p>{{ mangaDescription || "No description found" }}</p>
                 </div>
@@ -36,7 +37,8 @@
             mangaTitle: String,
             mangaDescription : String,
             mangaStatus: String,
-            mangasAuthors: []
+            mangasAuthors: Array,
+            mangaYear: Number
         }
     }
 </script>
