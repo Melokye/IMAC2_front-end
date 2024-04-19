@@ -8,7 +8,7 @@ import MangaPage from '@/pages/MangaPage.vue'
 
 const routes = [
     {path: '/', component: Home},
-    {path: '/manga/:id', component: MangaPage},
+    {name:"mangaPage", path: '/manga/:id', component: MangaPage},
 
     // TODO NotFound
     {path: '/:pathMatch(.*)*', redirect: '/'},

@@ -1,10 +1,9 @@
 <template>
-    <router-link to="/manga/:mangaID" class="manga-card">
+    <div class="manga-card" @click="goToMangaPage">
         <div class="reversible">
             <img 
                 v-bind:src= "mangaCover"
             />
-            <!-- TODO {{ mangaID }} -->
             <div class="overlay">
                 <div class="text">
                     <p v-if="mangasAuthors.length == 1">By: {{mangasAuthors[0]}}</p>
@@ -25,7 +24,7 @@
         <h3>
             {{mangaTitle}}
         </h3>
-    </router-link>
+    </div>
 </template>
 
 <script>
@@ -38,7 +37,13 @@
             mangaStatus: String,
             mangasAuthors: Array,
             mangaYear: Number,
-            mangaID: Number
+            mangaID: String
+        },
+        methods: {
+            goToMangaPage(){
+                const id = this.mangaID;
+                this.$router.push({ name: 'mangaPage', params: { id } })
+            }
         }
     }
 </script>
