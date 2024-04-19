@@ -10,7 +10,7 @@
     <MangaCard v-for="manga in mangasOrganizedData"
       :mangaCover="cover(manga)"
       :mangaTitle="title(manga)"
-      :mangaDescription="manga.attributes.description.en"
+      :mangaDescription="description(manga)"
       :mangaStatus="manga.attributes.status"
       :mangasAuthors="authors(manga)"
       :mangaYear="manga.attributes.year"
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { getAuthors, getMangaCover, getMangasData, getTitle} from '@/services/api/mangaAPI';
+import { getAuthors, getDescription, getMangaCover, getMangasData, getTitle} from '@/services/api/mangaAPI';
 
 import MangaCard from '@/components/MangaCard.vue';
 import SearchMangas from '@/components/SearchMangas.vue';
@@ -84,6 +84,9 @@ export default {
     },
     authors(manga){
       return getAuthors(manga);
+    },
+    description(manga){
+      return getDescription(manga);
     }
   },
 }

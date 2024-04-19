@@ -16,7 +16,7 @@
                     </p>
                     <p>Year: {{ mangaYear || "Unknown" }}</p>
                     <p>Status: {{ mangaStatus }}</p>
-                    <p>{{ mangaDescription || "No description found" }}</p>
+                    <p>{{ mangaDescription }}</p>
                 </div>
             </div>
         </div>

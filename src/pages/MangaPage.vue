@@ -1,5 +1,14 @@
 <template>
-    <h2>{{mangaData}}</h2>
+    <img v-bind:src="cover(mangaData)"/>
+    <h2>{{title(mangaData)}}</h2>
+    <p>Made by</p>
+    <ul>
+        <li v-for="author in authors(mangaData)">
+            {{author}}
+        </li>
+    </ul>
+    {{description(mangaData)}}
+    <!-- {{mangaData}} -->
     <!-- TODO à supp : -->
 
     <!-- {{ manga.attributes.originalLanguage }} -->
@@ -17,16 +26,11 @@
 </template>
 
 <script>
-// import MangasGallery from '@/components/MangasGallery.vue';
-// import SearchMangas from '@/components/SearchMangas.vue';
-import { getMangaData } from '@/services/api/mangaAPI';
+import { getMangaData, getTitle, getMangaCover, getAuthors, getDescription} from '@/services/api/mangaAPI';
 
 export default{
     name: "MangaPage",
-    // components: {
-    //     MangasGallery,
-    //     SearchMangas
-    // }
+
     data() {
         return{
             mangaData: [],
@@ -40,7 +44,26 @@ export default{
     methods:{
         async retrieveMangaData(id){
             this.mangaData = await getMangaData(id);
+        },
+        title(manga){
+            return getTitle(manga);
+        },
+        cover(manga){
+            return getMangaCover(manga);
+        },
+        authors(manga){
+            return getAuthors(manga);
+        },
+        description(manga){
+            return getDescription(manga)
         }
     }
 }
 </script>
+
+<style scoped>
+    img{
+        width: 100%;
+        max-width: 20rem;
+    }
+</style>

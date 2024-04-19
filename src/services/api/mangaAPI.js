@@ -52,3 +52,7 @@ export function getAuthors(manga){
         .filter(data => data['type'] == 'author')
         .map(data => data.attributes['name']);
 }
+
+export function getDescription(manga){
+    return manga.attributes.description.en || "No description found";
+}
