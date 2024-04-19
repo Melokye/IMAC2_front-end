@@ -16,8 +16,7 @@ const getMangasData = async function(title){
     });
     
     if(response.status != 200){
-        console.log("error");
-        // TODO voir diapo
+        new Error(response.statusText);
     }
     // console.log(response.data.data); // TODO debug
     return response.data.data;
