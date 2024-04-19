@@ -7,7 +7,12 @@
 
             <div class="overlay">
                 <div class="text">
-                    <p>By: </p>
+                    <p>By:</p>
+                    <ul>
+                        <li v-for="author in mangasAuthors">
+                            {{author}}
+                        </li>
+                    </ul>
                     <p>Status: {{ mangaStatus }}</p>
                     <p>{{ mangaDescription || "No description found" }}</p>
                 </div>
@@ -28,7 +33,8 @@
             mangaCover: String,
             mangaTitle: String,
             mangaDescription : String,
-            mangaStatus: String
+            mangaStatus: String,
+            mangasAuthors: []
         }
     }
 </script>

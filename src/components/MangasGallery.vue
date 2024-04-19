@@ -9,10 +9,11 @@
       :mangaTitle="manga.attributes.title.en"
       :mangaDescription="manga.attributes.description.en"
       :mangaStatus="manga.attributes.status"
+      :mangasAuthors="getAuthors(manga)"
     />
 
     <!-- TODO à supp : -->
-
+    
     <!-- <div v-for="data in manga">
         <p>{{ data }}</p>
       </div> -->
@@ -92,6 +93,12 @@ export default {
     getMangaCover(manga){
       let mangaCoverId = manga.relationships.filter(data => data['type'] == 'cover_art').map(data => data.attributes['fileName'])[0];
       return 'https://uploads.mangadex.org/covers/' +  manga.id + '/' +  mangaCoverId;
+    },
+    getAuthors(manga){
+      return manga.relationships.filter(
+          data => data['type'] == 'author'
+        ).map(data => data.attributes['name']
+      );
     }
   },
 }
