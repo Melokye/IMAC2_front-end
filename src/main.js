@@ -3,22 +3,21 @@ import { createApp } from 'vue'
 import { createMemoryHistory, createRouter } from 'vue-router'
 import App from './App.vue'
 
-import Home from './pages/home.vue'
+import Home from '@/pages/Home.vue'
+import MangaPage from '@/pages/MangaPage.vue'
 
 const routes = [
     {path: '/', component: Home},
-    // TODO créer MangaPage
-    // {path: '/manga/:id', component: MangasGallery},
-    // TODO creer NotFound
+    {path: '/manga/:id', component: MangaPage},
+
+    // TODO NotFound
+    {path: '/:pathMatch(.*)*', redirect: '/'},
 ]
 
 const router = createRouter({
     history: createMemoryHistory(),
     routes,
 })
-
-// TODO ajouter plugin vue-router pour app multipages
-// tuto : https://mitium.antoine-libert.com/courses/vuejs/chapter1/mainJSFile.html
 
 createApp(App)
     .use(router)

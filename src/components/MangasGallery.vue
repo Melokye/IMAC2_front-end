@@ -14,30 +14,17 @@
       :mangaStatus="manga.attributes.status"
       :mangasAuthors="getAuthors(manga)"
       :mangaYear="manga.attributes.year"
+      :mangaID="manga.id"
     />
-
-    <!-- TODO à supp : -->
-
-    <!-- {{ manga.attributes.originalLanguage }} -->
-    <!-- TODO nb de chapitres pas encore lu -->
-
-    <!-- TODO <p>Lien vers le dernier chapitre (lu ?)</p> -->
-    <!-- TODO <p>Obligatoire : scanlation groups</p> -->
-
-    <!-- TODO altTitle ? -> originalLanguage + selected -->
-    <!-- TODO {{ manga.availableTranslatedLanguages }} -->
-    <!-- TODO {{ manga.attributes.latestUploadedChapter }} -->
-
-    <!-- TODO {{ manga.attributes.tags }} -->
   </div>
 </template>
 
 <script>
-import { getMangasData } from '../services/api/mangaAPI';
+import { getMangasData } from '@/services/api/mangaAPI';
 
 import MangaCard from '@/components/MangaCard.vue';
-import SearchMangas from './SearchMangas.vue';
-import GallerySort from './GallerySort.vue';
+import SearchMangas from '@/components/SearchMangas.vue';
+import GallerySort from '@/components/GallerySort.vue';
 
 export default {
   name: 'MangasGallery',
@@ -50,8 +37,9 @@ export default {
     this.retrieveMangasData();
   },
   watch: {
+    // TODO ne fonctionnent pas directement sur l'enfant ...
     search: function(newSearch) {
-      localStorage.setItem("search", newSearch); // ne fonctionnait pas directement sur l'enfant ...
+      localStorage.setItem("search", newSearch); 
       this.retrieveMangasData();
     },
     mangasSortType: function(newMangasSortType) {
@@ -87,18 +75,18 @@ export default {
     async retrieveMangasData() {
       this.mangasData = await getMangasData(this.search);
     },
+
     getTitle(manga){
       return manga.attributes.title[manga.attributes.originalLanguage] || manga.attributes.title.en;
     },
-    goToManga() {
-      this.$router.push('/manga/' + manga.id);
-    },
+
     getMangaCover(manga){
       let mangaCoverId = manga.relationships
         .filter(data => data['type'] == 'cover_art')
         .map(data => data.attributes['fileName'])[0];
       return 'https://uploads.mangadex.org/covers/' +  manga.id + '/' +  mangaCoverId;
     },
+
     getAuthors(manga){
       return manga.relationships
         .filter(data => data['type'] == 'author')

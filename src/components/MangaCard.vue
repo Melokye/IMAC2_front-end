@@ -1,10 +1,10 @@
 <template>
-    <div class="manga-card">
+    <router-link to="/manga/:mangaID" class="manga-card">
         <div class="reversible">
             <img 
                 v-bind:src= "mangaCover"
             />
-
+            <!-- TODO {{ mangaID }} -->
             <div class="overlay">
                 <div class="text">
                     <p v-if="mangasAuthors.length == 1">By: {{mangasAuthors[0]}}</p>
@@ -21,12 +21,11 @@
                 </div>
             </div>
         </div>
-
+    
         <h3>
             {{mangaTitle}}
         </h3>
-
-    </div>
+    </router-link>
 </template>
 
 <script>
@@ -38,7 +37,8 @@
             mangaDescription : String,
             mangaStatus: String,
             mangasAuthors: Array,
-            mangaYear: Number
+            mangaYear: Number,
+            mangaID: Number
         }
     }
 </script>
