@@ -6,10 +6,13 @@
       :value="mangasSortType"
       @input="onMangasSortTypeChanged"
     >
-
-    <!-- TODO mettre les options dans un dico https://fr.vuejs.org/v2/guide/forms.html#Select -->
-      <option value="AZName">Noms de A à Z</option>
-      <option value="ZAName">Noms de Z à A</option>
+      
+    <option 
+      v-for="option in mangasOptions" 
+      :value="option.value"
+    >
+      {{ option.text }}
+    </option>
     </select>
   </div>
 </template>
@@ -27,6 +30,9 @@
       onMangasSortTypeChanged(event) {
         this.$emit('update:mangasSortType', event.target.value);
       },
+    },
+    props:{
+      mangasOptions: []
     }
   }
 </script>

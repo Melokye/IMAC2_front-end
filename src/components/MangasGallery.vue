@@ -1,7 +1,10 @@
 <template>
   <SearchMangas v-model:search="search"/>
 
-  <GallerySort v-model:mangasSortType="mangasSortType" />
+  <GallerySort 
+    v-model:mangasSortType="mangasSortType"
+    :mangasOptions="mangasOptions"
+  />
 
   <div class="mangasGallery">
     <MangaCard v-for="manga in mangasOrganizedData"
@@ -13,10 +16,6 @@
     />
 
     <!-- TODO à supp : -->
-    
-    <!-- <div v-for="data in manga">
-        <p>{{ data }}</p>
-      </div> -->
 
     <!-- {{ manga.attributes.originalLanguage }} -->
     <!-- TODO nb de chapitres pas encore lu -->
@@ -27,7 +26,6 @@
     <!-- TODO altTitle ? -> originalLanguage + selected -->
     <!-- TODO {{ manga.availableTranslatedLanguages }} -->
     <!-- TODO {{ manga.attributes.latestUploadedChapter }} -->
-                    <!-- altTitles ? -->
 
     <!-- TODO {{ manga.attributes.tags }} -->
   </div>
@@ -77,7 +75,11 @@ export default {
     return {
       mangasData: [],
       search: localStorage.getItem("search") || "",
-      mangasSortType: localStorage.getItem("mangasSortType") || "AZName"
+      mangasOptions: [
+        { text: 'A to Z', value: 'AZName' },
+        { text: 'Z to A', value: 'ZAName' },
+      ],
+      mangasSortType: localStorage.getItem("mangasSortType") || "AZName",
     }
   },
   methods: {
