@@ -7,12 +7,14 @@
 
             <div class="overlay">
                 <div class="text">
-                    <p>By:</p>
-                    <ul>
-                        <li v-for="author in mangasAuthors">
-                            {{author}}
-                        </li>
-                    </ul>
+                    <p v-if="mangasAuthors.length == 1">By: {{mangasAuthors[0]}}</p>
+                    <p v-else>By:
+                        <ul>
+                            <li v-for="author in mangasAuthors">
+                                {{author}}
+                            </li>
+                        </ul>
+                    </p>
                     <p>Status: {{ mangaStatus }}</p>
                     <p>{{ mangaDescription || "No description found" }}</p>
                 </div>
