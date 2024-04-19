@@ -91,14 +91,15 @@ export default {
       this.$router.push('/manga/' + manga.id);
     },
     getMangaCover(manga){
-      let mangaCoverId = manga.relationships.filter(data => data['type'] == 'cover_art').map(data => data.attributes['fileName'])[0];
+      let mangaCoverId = manga.relationships
+        .filter(data => data['type'] == 'cover_art')
+        .map(data => data.attributes['fileName'])[0];
       return 'https://uploads.mangadex.org/covers/' +  manga.id + '/' +  mangaCoverId;
     },
     getAuthors(manga){
-      return manga.relationships.filter(
-          data => data['type'] == 'author'
-        ).map(data => data.attributes['name']
-      );
+      return manga.relationships
+        .filter(data => data['type'] == 'author')
+        .map(data => data.attributes['name']);
     }
   },
 }

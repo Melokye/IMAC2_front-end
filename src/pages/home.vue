@@ -1,7 +1,7 @@
 <template>
     <!-- <SearchMangas v-model:search="search"/> -->
     <!-- TODO dans le header directement ? -->
-    <h2>Need new suggestions ?</h2>
+    <h2>Want new suggestions ?</h2>
     <MangasGallery/>
 </template>
 
