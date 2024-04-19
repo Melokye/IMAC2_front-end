@@ -53,6 +53,9 @@ export default {
       localStorage.setItem("search", newSearch); // ne fonctionnait pas directement sur l'enfant ...
       this.retrieveMangasData();
     },
+    mangasSortType: function(newMangasSortType) {
+      localStorage.setItem("mangasSortType", newMangasSortType);
+    }
   },
   computed: {
     mangasOrganizedData() {

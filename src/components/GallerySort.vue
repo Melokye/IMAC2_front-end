@@ -21,11 +21,6 @@
   export default {
     name: 'GallerySort',
     emit: ["update:mangasSortType"],
-    watch: {
-      mangasSortType: function(newMangasSortType) {
-        localStorage.setItem("mangasSortType", newMangasSortType);
-      }
-    },
     methods: {
       onMangasSortTypeChanged(event) {
         this.$emit('update:mangasSortType', event.target.value);
