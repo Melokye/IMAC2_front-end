@@ -6,6 +6,7 @@
       @change="onSearchChanged" 
       placeholder="Search something to read"
     >
+    <button @click="cleanSearch">x</button>
 </template>
 
 <script>
@@ -20,6 +21,9 @@
     methods: {
       onSearchChanged(event) {
         this.$emit('update:search', event.target.value);
+      },
+      cleanSearch: function() {
+        this.$emit('update:search', "")
       },
     }
   }
