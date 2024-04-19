@@ -59,12 +59,15 @@
         overflow: hidden;
         text-overflow: ellipsis;
         text-align: center;
+
+        cursor: pointer;
     }
     .reversible{
         position: relative;
     }
     .manga-card:hover .overlay {
         opacity: 1;
+        transform: translateY(-5px) scale(1.005) translateZ(0);
     }
     .manga-card:hover img {
         opacity: 0.1;
